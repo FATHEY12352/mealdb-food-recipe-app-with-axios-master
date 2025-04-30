@@ -3,7 +3,7 @@ import React from 'react';
 import { useSidebarContext } from '../../context/sidebarContext';
 import { ImCancelCircle} from "react-icons/im";
 import "./Sidebar.scss"; // تأكد من وجود هذا الملف
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useMealContext } from '../../context/mealContext';
 import { useAuth } from '../../context/AuthContext';
 
@@ -11,7 +11,6 @@ const Sidebar = () => {
     const { isSidebarOpen, closeSidebar} = useSidebarContext();
     const { categories } = useMealContext();
     const { currentUser, logout } = useAuth();
-    const navigate = useNavigate();
 
     const handleLogout = async () => {
       closeSidebar();
