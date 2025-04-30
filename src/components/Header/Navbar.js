@@ -23,18 +23,21 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const scrollListener = () => handleScroll();
+    // --- تم حذف السطر التالي لأنه غير مستخدم ---
+    // const scrollListener = () => handleScroll();
+
+    // استخدام handleScroll مباشرة
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     }
-  }, []);
+  }, []); // مصفوفة الاعتماديات فارغة ليعمل مرة واحدة
 
   const goToProfile = () => {
     navigate('/profile');
   };
 
-  // --- أنماط مقترحة للروابط كأزرار (يمكن نقلها لـ Header.scss) ---
+  // --- [أنماط styles تبقى كما هي] ---
   const styles = {
     authButton: {
       color: 'white',
@@ -45,8 +48,6 @@ const Navbar = () => {
       transition: 'background-color 0.3s ease, color 0.3s ease',
       fontSize: '13px',
       fontWeight: '500'
-      // أضف تأثير hover في SCSS:
-      // &:hover { background-color: white; color: var(--clr-orange); }
     },
     userProfileButton: {
       background: 'none',
@@ -54,9 +55,9 @@ const Navbar = () => {
       color: 'white',
       cursor: 'pointer',
       marginRight: '20px',
-      padding: '0', // إزالة أي padding افتراضي للزر
-      display: 'flex', // لترتيب الأيقونة والنص
-      alignItems: 'center' // لمحاذاة الأيقونة والنص عموديًا
+      padding: '0',
+      display: 'flex',
+      alignItems: 'center'
     }
   };
   // --- نهاية الأنماط ---
@@ -72,31 +73,29 @@ const Navbar = () => {
 
           <div className='navbar-controls flex align-center'>
             {currentUser ? (
-              // --- المستخدم المسجل دخوله ---
               <button
                 type="button"
-                className='user-profile-btn flex align-center fs-14 fw-5' // يمكنك استخدام هذا الكلاس للتنسيق في SCSS
+                className='user-profile-btn flex align-center fs-14 fw-5'
                 onClick={goToProfile}
                 title="View Profile"
-                style={styles.userProfileButton} // تطبيق الأنماط المضمنة
+                style={styles.userProfileButton}
               >
                 <IoMdPerson size={20} style={{ marginRight: '5px' }} />
                 <span>Welcome, {currentUser.displayName || currentUser.email}</span>
               </button>
             ) : (
-              // --- المستخدم غير المسجل دخوله ---
               <div className='auth-links flex align-center' style={{ marginRight: '15px' }}>
                 <Link
                   to="/login"
-                  className='auth-link-btn' // استخدم هذا الكلاس للتنسيق في SCSS
-                  style={styles.authButton} // تطبيق الأنماط المضمنة
+                  className='auth-link-btn'
+                  style={styles.authButton}
                 >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className='auth-link-btn' // استخدم هذا الكلاس للتنسيق في SCSS
-                  style={{...styles.authButton, marginLeft: '10px'}} // إضافة هامش أيسر
+                  className='auth-link-btn'
+                  style={{...styles.authButton, marginLeft: '10px'}}
                 >
                   Sign Up
                 </Link>

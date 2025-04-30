@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 // --- 1. Import Firestore functions and db ---
 import { db } from '../firebase/config';
-import { collection, query, getDocs, orderBy } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 // --- 2. Import MealList component (assuming it can display meals based on passed data) ---
 import MealList from '../components/Meal/MealList'; // <-- Adjust path if necessary
 // --- 3. Import Loader component ---
